@@ -2,9 +2,11 @@ var x=360; //початкова х точка авто
 var y=500; //початкова у точка авто
 var step=-20; // цикл повторення ліній розмітки (поки працює тільки для розширення 600рх)
 var distance=100; // відстань між лініями розмітки
-var speed_game=1; // швидкість руху  ігрі
+var speed_game=1; // швидкість руху в ігрі
 var ran_step=20; //крок для зміни к-ті зустрічних авто
 var f=0; //для лічильника рандомних координат
+var s=10;
+var l=1;
 
 //допоміжні величини
 var random;
@@ -76,10 +78,44 @@ function getRandom(){
 function f_step (){
     if(step>=180){
         step=0;
+        s=s+10; //рахуємо набрані бали
     }
     else{
         step=step+20;
     }
+}
+
+//виводимо бали гравця
+function score(){
+    $('#score').html(s);
+}
+
+//виводимо рівень гравця
+function level(){
+    $('#level').html(l);
+}
+
+//змінюємо рівень гри
+function ch_lvl(){
+    switch(s){
+        case 100:
+            l=2;
+            speed_game=1.5;
+            break;
+        case 500:
+            l=3;
+            speed_game=2.5;
+            break;
+        case 800:
+            l=4;
+            break;
+        case 1000:
+            l=5;
+            break;
+        default:
+            l=l;
+    }
+    return l,speed_game;
 }
 
 //реакція авто на кнопки
@@ -108,6 +144,9 @@ function start(){
     draw();
     random_X();
     f_step ();
+    score();
+    ch_lvl();
+    level();
 }
 
 //затримка по часу (швидкусть пересування авто)

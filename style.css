@@ -2,7 +2,16 @@ body {
     min-height: 650px;
     min-width: 850px;
 }
+
+td,th {
+    border: 2px solid black;
+}
+
 #road {
     border:1px solid black;
     text-align: center;
+}
+
+#left {
+    float:left;
 }
