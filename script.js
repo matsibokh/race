@@ -20,6 +20,7 @@ function draw() {
         context.drawImage(img,x,y,40,88.08);
         context.beginPath();
         white_lines();
+        an_car();
     };
     img.src = 'car.png';
 }
@@ -105,7 +106,6 @@ $(document).on('keydown', function(event){;
 //початок гри
 function start(){
     draw();
-    an_car();
     random_X();
     f_step ();
 }
