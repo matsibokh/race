@@ -1,9 +1,19 @@
-var x=360, y=500,  step=-20, distance=100, speed_game=1, random, ran_step=20, f=0;
+var x=360; //початкова х точка авто
+var y=500; //початкова у точка авто
+var step=-20; // цикл повторення ліній розмітки (поки працює тільки для розширення 600рх)
+var distance=100; // відстань між лініями розмітки
+var speed_game=1; // швидкість руху  ігрі
+var ran_step=20; //крок для зміни к-ті зустрічних авто
+var f=0; //для лічильника рандомних координат
+
+//допоміжні величини
+var random;
 
 //малюєм дорогу, розмітку і машину    
 function draw() {
     var img = new Image();
     img.onload = function(){
+        draw_grass();
         context=road.getContext('2d');
         context.fillStyle='gray';
         context.fillRect(80,0,(road.width-160),road.height);
@@ -22,7 +32,7 @@ function draw_grass(){
     context.fillRect(0,0,road.width,road.height);
 }
 
-//малюємо розмітку дороги
+//робимо графіку
 function white_lines(){
     context=road.getContext('2d');
     context.fillStyle='white';
@@ -95,11 +105,9 @@ $(document).on('keydown', function(event){;
 //початок гри
 function start(){
     draw();
-    draw_grass();
     an_car();
     random_X();
     f_step ();
-    console.log(random);
 }
 
 //затримка по часу (швидкусть пересування авто)
