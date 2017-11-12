@@ -10,8 +10,13 @@ td,th {
 #road {
     border:1px solid black;
     text-align: center;
+    will-change: transform;
 }
 
 #left {
     float:left;
+}
+
+canvas{
+    cursor:none;
 }
